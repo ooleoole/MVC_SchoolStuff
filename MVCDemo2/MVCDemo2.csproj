@@ -211,7 +211,7 @@
     <Compile Include="Models\Interface\IEntity.cs" />
     <Compile Include="Models\Interface\IRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\UserModelFolder\EntityList.cs" />
+    <Compile Include="Models\Global\EntityList.cs" />
     <Compile Include="Models\UserModelFolder\UserModel.cs" />
     <Compile Include="Models\Repositorys\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -278,6 +278,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

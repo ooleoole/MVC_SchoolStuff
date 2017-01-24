@@ -22,6 +22,7 @@ namespace MVCDemo2.Models.UserModelFolder
 
         public int Count => _innerList.Count;
         public virtual bool IsReadOnly => _isReadOnly;
+        public T this[int index] => _innerList.Skip(index).FirstOrDefault();
 
         public EntityList()
         {
@@ -57,16 +58,17 @@ namespace MVCDemo2.Models.UserModelFolder
             var firstFreeId = 1;
             if (_innerList.Count != 0)
             {
-                _innerList.OrderByDescending(item => item.Id);
-                firstFreeId = _innerList.Count + 1;
+                
+                var sortedInnerList = _innerList.OrderBy(item => item.Id).ToList();
+                firstFreeId = sortedInnerList.Count() + 1;
 
-                for (var i = 0; i < _innerList.Count; i++)
+                for (var i = 0; i < sortedInnerList.Count(); i++)
                 {
-                    var id = _innerList[i].Id;
+                    var id = sortedInnerList[i].Id;
 
                     if (id != i + 1)
                     {
-                        return firstFreeId = i + 1;
+                        return i + 1;
                     }
                 }
             }

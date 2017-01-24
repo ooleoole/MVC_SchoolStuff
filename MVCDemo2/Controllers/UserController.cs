@@ -10,7 +10,7 @@ namespace MVCDemo2.Controllers
     public class UserController : Controller
     {
 
-        private static UserRepository _userRepository= new UserRepository();
+        private static UserRepository _userRepository = new UserRepository();
         // GET: User
         public ActionResult Index()
         {
@@ -32,13 +32,25 @@ namespace MVCDemo2.Controllers
 
         public ActionResult Delete([Bind(Prefix = "Id")]int userId)
         {
-            
             return View(_userRepository.GetById(userId));
         }
         [HttpPost]
         public ActionResult Delete(UserModel userModel)
         {
             _userRepository.DeleteById(userModel.Id);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit([Bind(Prefix = "Id")]int userId)
+        {
+            var user = _userRepository.GetById(userId);
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult Edit(UserModel user)
+        {
+            _userRepository.Edit(user);
+
             return RedirectToAction("Index");
         }
 
