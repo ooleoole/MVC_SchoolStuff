@@ -57,7 +57,7 @@ namespace MVCDemo2.Models.UserModelFolder
                 var sortedInnerList = _innerList.OrderBy(item => item.Id).ToList();
                 firstFreeId = sortedInnerList.Count + 1;
 
-                for (var i = 0; i < sortedInnerList.Count(); i++)
+                for (var i = 0; i < sortedInnerList.Count; i++)
                 {
                     var id = sortedInnerList[i].Id;
 
