@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using System.Web;
 using MVCDemo2.Models.Interface;
 
 namespace MVCDemo2.Models.UserModelFolder
@@ -14,9 +11,7 @@ namespace MVCDemo2.Models.UserModelFolder
 
 
     {
-
-
-        protected bool _isReadOnly;
+        private bool _isReadOnly;
         private Collection<T> _innerList;
 
 
@@ -60,7 +55,7 @@ namespace MVCDemo2.Models.UserModelFolder
             {
                 
                 var sortedInnerList = _innerList.OrderBy(item => item.Id).ToList();
-                firstFreeId = sortedInnerList.Count() + 1;
+                firstFreeId = sortedInnerList.Count + 1;
 
                 for (var i = 0; i < sortedInnerList.Count(); i++)
                 {

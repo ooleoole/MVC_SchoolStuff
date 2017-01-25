@@ -9,12 +9,12 @@ using MVCDemo2.Models.UserModelFolder;
 
 namespace MVCDemo2.Models
 {
-    public interface IRepository
+    public interface IRepository<T> where T : IEntity
     {
         UserModel GetById(int id);
-        EntityList<UserModel> GetAll();
+        EntityList<T> GetAll();
         void DeleteById(int id);
-        void Edit(IEntity entityItem);
-        void Add(IEntity entityItem);
+        void Edit(T entityItem);
+        void Add(T entityItem);
     }
 }

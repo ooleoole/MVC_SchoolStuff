@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using MVCDemo2.Models.Interface;
 using MVCDemo2.Models.UserModelFolder;
 
 namespace MVCDemo2.Models
 {
-    public class UserRepository : IRepository
+    public class UserRepository : IRepository<UserModel>
     {
         private EntityList<UserModel> _userModels = new EntityList<UserModel>();
 
@@ -36,13 +33,13 @@ namespace MVCDemo2.Models
             _userModels.Remove(GetById(id));
         }
 
-        public void Edit(IEntity updatedUser)
+        public void Edit(UserModel updatedUser)
         {
             foreach (var user in _userModels)
             {
                 if (user.Id == updatedUser.Id)
                 {
-                    var userModel = (UserModel)updatedUser;
+                    var userModel = updatedUser;
                     user.Address = userModel.Address;
                     user.Birthdate = userModel.Birthdate;
                     user.Email = userModel.Email;
@@ -53,9 +50,9 @@ namespace MVCDemo2.Models
             }
         }
 
-        public void Add(IEntity userModel)
+        public void Add(UserModel entityItem)
         {
-            _userModels.Add((UserModel)userModel);
+            _userModels.Add(entityItem);
         }
     }
 }
