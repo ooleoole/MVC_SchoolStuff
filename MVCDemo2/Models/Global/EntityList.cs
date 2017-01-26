@@ -48,17 +48,8 @@ namespace MVCDemo2.Models.UserModelFolder
             _innerList.Add(item);
         }
 
-        private int SetId()
-        {
-            var firstFreeId = 1;
+        private int SetId() => _innerList.Count > 0 ? GetFirstFreeId() : 1;
 
-            if (_innerList.Count == 0)
-                return firstFreeId;
-
-            firstFreeId = GetFirstFreeId();
-
-            return firstFreeId;
-        }
 
         private int GetFirstFreeId()
         {
