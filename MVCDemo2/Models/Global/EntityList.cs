@@ -51,23 +51,29 @@ namespace MVCDemo2.Models.UserModelFolder
         private int SetId()
         {
             var firstFreeId = 1;
-            if (_innerList.Count != 0)
+
+            if (_innerList.Count == 0)
+                return firstFreeId;
+
+            firstFreeId = GetFirstFreeId();
+
+            return firstFreeId;
+        }
+
+        private int GetFirstFreeId()
+        {
+            var sortedInnerList = _innerList.OrderBy(item => item.Id).ToList();
+            var firstFreeId = sortedInnerList.Count + 1;
+
+            for (var i = 0; i < sortedInnerList.Count; i++)
             {
-                
-                var sortedInnerList = _innerList.OrderBy(item => item.Id).ToList();
-                firstFreeId = sortedInnerList.Count + 1;
+                var id = sortedInnerList[i].Id;
 
-                for (var i = 0; i < sortedInnerList.Count; i++)
+                if (id != i + 1)
                 {
-                    var id = sortedInnerList[i].Id;
-
-                    if (id != i + 1)
-                    {
-                        return i + 1;
-                    }
+                    return i + 1;
                 }
             }
-
             return firstFreeId;
         }
 
