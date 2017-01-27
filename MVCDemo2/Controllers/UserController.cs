@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using MVCDemo2.Models;
 
 namespace MVCDemo2.Controllers
@@ -53,6 +54,12 @@ namespace MVCDemo2.Controllers
 
             return RedirectToAction("Index");
         }
+
+        /*public ActionResult Test()
+        {
+            ViewBag.Message = "Testin";
+            return View();
+        }*/
 
         
     }
